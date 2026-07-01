@@ -1,0 +1,26 @@
+{
+    "name": "neu-desk-cli",
+    "version": "1.0.0",
+    "description": "Neutralino Hello World with React GUI and TypeScript CLI",
+    "type": "module",
+    "scripts": {
+        "dev:vite": "vite",
+        "build:vite": "vite build",
+        "dev": "neu run",
+        "build": "neu build --release",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@neutralinojs/lib": "^6.8.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "devDependencies": {
+        "@neutralinojs/neu": "^11.7.2",
+        "@types/react": "^18.3.12",
+        "@types/react-dom": "^18.3.1",
+        "@vitejs/plugin-react": "^4.3.4",
+        "typescript": "^5.7.2",
+        "vite": "^6.0.7"
+    }
+}
