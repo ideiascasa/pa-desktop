@@ -14,7 +14,7 @@ init();
 const checkCliMode = async () => {
     if (typeof NL_ARGS !== 'undefined' && NL_ARGS.includes('--run')) {
         // Log para debug (vai para arquivo de log e console no Docker)
-        await debug.log('hello world');
+        await debug.log('PA-Desktop.');
         await app.exit(0);
         return true;
     }

@@ -1,12 +1,20 @@
 # AGENTS.md - Instruções para Agentes AI
 
-Este arquivo contém instruções para agentes de IA que trabalham neste projeto.
+> Este arquivo 'AGENTS.md' é a fonte de verdade absoluta para agentes de IA
 
-## 📋 Visão Geral do Projeto
+# PA-Desktop
 
-**Neu Desk CLI** é um aplicativo Neutralino.js com React e TypeScript que opera em dois modos:
-1. **Modo GUI**: Janela desktop mostrando "Hello World"
-2. **Modo CLI**: Output de console quando executado com `--run`
+> Personal Agent Desktop
+
+- **🖥️ Modo GUI**: Exibe uma janela moderna com "Hello World"
+- **💻 Modo CLI**: Quando executado com `--run`, mostra "PA-Desktop." no console
+
+- Modo `cli` poderá ser usado para atualizações, configurações e usos futuros
+
+```bash
+# Executa e mostra "PA-Desktop." no console
+./neu-desk-cli-mac_arm64 --run
+```
 
 ## 🏗️ Arquitetura
 
@@ -25,9 +33,6 @@ src/
 ├── App.css          # Estilos com glassmorphism
 └── vite-env.d.ts    # Declarações TypeScript para Neutralino globals
 
-cron/
-└── hello-job.ts     # Job TypeScript para cron Linux
-
 neutralino.config.json  # Configuração do Neutralino
 ```
 
@@ -35,12 +40,6 @@ neutralino.config.json  # Configuração do Neutralino
 
 1. `init()` do Neutralino é chamado
 2. Verifica `NL_ARGS` para detectar `--run`
-3. Se `--run`:
-   - Executa `debug.log('hello world')`
-   - Chama `app.exit()`
-4. Se não `--run`:
-   - Renderiza aplicação React
-   - Configura handler de `windowClose`
 
 ## 🔧 Comandos de Desenvolvimento
 
@@ -63,17 +62,6 @@ npm run preview      # Preview do build Vite
 - Usar `declare const` para globals do Neutralino
 - Tipos definidos em `vite-env.d.ts`
 
-### CSS
-- Usar variáveis CSS (`:root`)
-- Preferir `rem` para tamanhos
-- Animações com `@keyframes`
-- Tema: gradiente roxo (#667eea → #764ba2)
-
-### Neutralino
-- Sempre chamar `init()` antes de usar APIs
-- Usar `events.on('windowClose', ...)` para cleanup
-- `nativeAllowList` em `neutralino.config.json` define APIs permitidas
-
 ## 🚫 O Que Evitar
 
 1. **Não usar require()** - projeto usa ES modules
@@ -92,11 +80,6 @@ npm run preview      # Preview do build Vite
 1. Modificar `checkCliMode()` em `main.tsx`
 2. Adicionar novo argumento no check de `NL_ARGS`
 3. Implementar lógica e chamar `app.exit()`
-
-### Adicionar Novo Cron Job
-1. Criar arquivo em `cron/`
-2. Seguir padrão de `hello-job.ts`
-3. Documentar uso no crontab
 
 ## 🐛 Debugging
 
@@ -138,7 +121,3 @@ npm run dev
 - [Neutralino.js Docs](https://neutralino.js.org/docs/)
 - [React Docs](https://react.dev/)
 - [Vite Docs](https://vitejs.dev/)
-
----
-
-*Última atualização: Janeiro 2026*
