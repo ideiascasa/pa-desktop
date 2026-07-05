@@ -4,6 +4,9 @@
 # Neutralinojs binaries and builds
 /bin
 /dist
+/.tmp
+/.claude
+/.junie
 
 # Neutralinojs client (minified)
 neutralino.js
