@@ -16,6 +16,20 @@
 ./neu-desk-cli-mac_arm64 --run
 ```
 
+## ⚙️ Configuração Oficial: `padesktop.json`
+
+O `padesktop.json` (raiz do app) é o **arquivo oficial de configuração** da aplicação — toda configuração persistente do usuário deve ser lida/gravada nele via `filesystem.readFile`/`writeFile` (funções `loadConfig`/`saveConfig` em `src/App.tsx`).
+
+```json
+{
+  "appName": "PA-Desktop",
+  "notchX": 512
+}
+```
+
+- **`appName`**: nome da aplicação exibido na UI e no título da janela. Apesar do nome do projeto ser `PA-Desktop`, o usuário pode alterá-lo para qualquer outro nome.
+- **`notchX`**: posição horizontal do notch, persistida automaticamente ao arrastar (ausente = centrado).
+
 ## 🏗️ Arquitetura
 
 ### Stack Tecnológica

@@ -62,15 +62,15 @@ body {
 }
 
 .notch-face {
-    width: 286px;
-    height: 42px;
+    width: 46px;
+    height: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
     border: 1px solid rgba(255, 255, 255, 0.32);
     border-top: none;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 10px 10px;
     transition: border-color 0.25s ease;
 }
 
@@ -85,37 +85,29 @@ body {
     border-radius: 50%;
 }
 
-/* esquerda: status da aplicação — desativado: cinza em pulso */
-.notch-dot.status {
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
-    animation: notch-pulse 2.4s ease-in-out infinite;
-}
+/* Cada dot (dot-esquerdo e dot-direito) assume uma cor por vez.
+   Todas pulsam; a velocidade do pulso comunica a gravidade:
+   verde = tudo bem (muito lento, quase imperceptível)
+   laranja = atenção (velocidade média)
+   vermelho = erro (grave, rápido) */
 
-/* ativado: verde */
-.notch-dot.status.on {
+.notch-dot.verde {
     background: #34d399;
-    box-shadow: 0 0 8px rgba(52, 211, 153, 0.9);
+    box-shadow: 0 0 6px rgba(52, 211, 153, 0.6);
+    /* pulso suave: pico mais claro e vale menos apagado que as outras cores */
+    animation: notch-pulse-verde 10s ease-in-out infinite;
 }
 
-/* direita: processamento — apagado em repouso */
-.notch-dot.processing {
-    background: rgba(255, 255, 255, 0.16);
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.10);
-}
-
-/* áudio tocando: pulso laranja contínuo */
-.notch-dot.processing.on {
+.notch-dot.laranja {
     background: #fb923c;
     box-shadow: 0 0 8px rgba(251, 146, 60, 1);
-    animation: notch-pulse 0.8s ease-in-out infinite;
+    animation: notch-pulse 1.5s ease-in-out infinite;
 }
 
-.notch-title {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: rgba(255, 255, 255, 0.9);
+.notch-dot.vermelho {
+    background: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 1);
+    animation: notch-pulse 0.35s ease-in-out infinite;
 }
 
 /* ===== Página principal (janela expandida) ===== */
@@ -205,6 +197,16 @@ body {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.4);
     font-style: italic;
+}
+
+/* verde: nunca chega ao brilho máximo nem some — oscila discreto */
+@keyframes notch-pulse-verde {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 0.55;
+    }
 }
 
 @keyframes notch-pulse {
